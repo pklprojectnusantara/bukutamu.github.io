@@ -1,0 +1,80 @@
+<html>
+  <head>
+     <title>Buku Tamu</title>
+     <link rel="stylesheet" href="style.css">
+  </head>
+  
+  <body>
+     <div class="main">
+         <div class="navbar">
+             <div class="icon">
+                 <h2 class="logo">Universitas Terbuka</h2>
+             </div>
+  
+             <div class="menu">
+                 <ul>
+                     <li><a href="#">Buku Tamu</a></li>
+                 </ul>
+             </div>
+  
+      </div> 
+          <div class="content">
+             <h1>Universitas <br><span>Terbuka</span></h1>
+             <p class="par">Making Higher Education Open to All </p>
+  
+              <div class="form">
+                <h2>Regitrasi Tamu</h2>
+              <form>
+                <div class="inputbox">
+                    <input type="text" value="" id="Nama" required placeholder="Masukan Nama">
+                </div>
+                <div class="inputbox">
+                    <input type="text" value="" id="Telepon" required placeholder="Masukan Telepon">                 
+                </div>
+                <div class="inputbox">
+                    <input type="text" value="" id="Tanggal" required placeholder="Masukan Tanggal">
+                </div>
+                <div class="inputbox">
+                  <input type="text" value="" id="Keperluan" required placeholder="Masukan Keperluan">
+              </div>
+              <button class="btnn" input type class="Daftar" value="Daftar" class="sub" id="Daftar">Daftar</button>
+            </form>
+         </div>
+        <script type="module">
+              // Import the functions you need from the SDKs you need
+              import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+              import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+       
+              // Your web app's Firebase configuration
+              const firebaseConfig = {
+                    apiKey: "AIzaSyD11sS8DmOg9kIp18b0eYUBX_z0v-1jLnw",
+                    authDomain: "daftar-tamu-ut.firebaseapp.com",
+                    projectId: "daftar-tamu-ut",
+                    storageBucket: "daftar-tamu-ut.appspot.com",
+                    messagingSenderId: "694569310418",
+                    ppId: "1:694569310418:web:1bcc50a747e9b5fc56750b"
+                  };
+            
+                  // Initialize Firebase
+                   const app = initializeApp(firebaseConfig);
+            
+                 //get ref to database
+                   const db = getDatabase(app);
+            
+                   document.getElementById("Daftar").addEventListener('click', function(e){
+                   e.preventDefault();
+
+                   set (ref(db, 'user/' + document.getElementById("Nama").value),
+                 {
+            
+                   nama: document.getElementById ("Nama").value,
+                   telepon: document.getElementById ("Telepon").value,
+                   tanggal: document.getElementById ("Tanggal").value,
+                   keperluan: document.getElementById ("Keperluan").value,
+            
+                 });
+                    alert("Register Berhasi  !");
+                 })
+         </script>
+    </body>
+</html>
